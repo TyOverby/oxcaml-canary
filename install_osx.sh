@@ -2,7 +2,7 @@
 
 set -euox pipefail
 
-brew install curl
+brew install curl autoconf
 
 curl -fsSL https://opam.ocaml.org/install.sh > install_opam.sh
 chmod +x install_opam.sh
