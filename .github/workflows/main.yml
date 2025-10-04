@@ -9,14 +9,19 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest]
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Install ts
-        run: sudo apt install moreutils
-
-      - name: Install opam & packages
+      - name: Install opam & packages (Linux)
+        if: runner.os == 'Linux'
         run: bash ./install_linux.sh
+
+      - name: Install opam & packages (macOS)
+        if: runner.os == 'macOS'
+        run: bash ./install_osx.sh
