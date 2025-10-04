@@ -18,10 +18,13 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Install opam & packages (Linux)
+      - name: Install prereqs (Linux)
         if: runner.os == 'Linux'
         run: bash ./install_linux.sh
 
-      - name: Install opam & packages (macOS)
+      - name: Install prereqs (macOS)
         if: runner.os == 'macOS'
         run: bash ./install_osx.sh
+
+      - name: Install opam & packages
+        run: bash ./install_xplat.sh
