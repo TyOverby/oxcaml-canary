@@ -11,4 +11,10 @@ chmod +x opam
 ./opam update --all
 ./opam switch create 5.2.0+ox --repos ox=git+https://github.com/oxcaml/opam-repository.git,default
 eval $(./opam env --switch 5.2.0+ox)
-./opam install -y ocamlformat merlin ocaml-lsp-server
+
+./opam install -y \
+    dune ocamlformat merlin ocaml-lsp-server \
+    core core_kernel async_js \
+    bonsai bonsai_web bonsai_web_components \
+    js_of_ocaml ppx_html ppx_css
+
